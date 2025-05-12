@@ -1,3 +1,6 @@
+public float playerSpeed = 5f;
+public Rigidbody2D playerRB;
+
 // Custom keys for movement
 public KeyCode moveUpKey = KeyCode.W;
 public KeyCode moveDownKey = KeyCode.S;
