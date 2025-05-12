@@ -1,0 +1,38 @@
+public bool p1;
+public bool p2;
+public GameManager gameManager;
+
+void Start()
+{
+    p1 = false;
+    p2 = false;
+}
+
+public void OnCollisionEnter2D(Collision2D collision)
+{
+    if (collision.gameObject.CompareTag("P1"))
+    {
+        p1 = true;
+        p2 = false;
+    }else if (collision.gameObject.CompareTag("P2"))
+    {
+        p1 = false;
+        p2 = true;
+    }
+}
+
+public void OnTriggerEnter2D(Collider2D collision)
+{
+    if (collision.gameObject.CompareTag("Goal"))
+    {
+        gameManager.ResetPositions();
+
+        if(p1)
+        {
+            gameManager.p1Score += 1;
+        }else if (p2)
+        {
+            gameManager.p2Score += 1;
+        }
+    }
+}
