@@ -1,0 +1,22 @@
+// Custom keys for movement
+public KeyCode moveUpKey = KeyCode.W;
+public KeyCode moveDownKey = KeyCode.S;
+public KeyCode moveLeftKey = KeyCode.A;
+public KeyCode moveRightKey = KeyCode.D;
+
+void Update()
+{
+    Vector2 moveDirection = Vector2.zero;
+
+    if (Input.GetKey(moveUpKey))
+        moveDirection.y += 1;
+    if (Input.GetKey(moveDownKey))
+        moveDirection.y -= 1;
+    if (Input.GetKey(moveRightKey))
+        moveDirection.x += 1;
+    if (Input.GetKey(moveLeftKey))
+        moveDirection.x -= 1;
+
+    moveDirection = moveDirection.normalized; // Normalize for diagonal movement
+    playerRB.linearVelocity = moveDirection * playerSpeed;
+}
